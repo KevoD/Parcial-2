@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form styleClass="form-horizontal">
+            <p:fieldset>
+
+                <!-- Form Name -->
+                <legend>Create</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <h:outputLabel class="col-md-4 control-label" for="username">User</h:outputLabel>
+                    <div class="col-md-4">
+                        <h:inputText id="username" value="#{usersController.actual.username}"  class="form-control input-md" required="" />
+
+                    </div>
+                </div>
+
+                <!-- Password input-->
+                <div class="form-group">
+                    <h:outputLabel class="col-md-4 control-label" for="userpassword"> Password </h:outputLabel>
+                    <div class="col-md-4">
+                        <h:inputSecret id="userpassword" value="#{usersController.actual.userpassword}"  class="form-control input-md" required="" />
+
+                    </div>
+                </div>
+
+                <!-- Password input-->
+                <div class="form-group">
+                    <h:outputLabel class="col-md-4 control-label" for="userpasswordrequired"> Password confirm </h:outputLabel>
+                    <div class="col-md-4">
+                        <h:inputSecret id="userpasswordrequired" value="#{usersAuthController.autpassword(password)}"  class="form-control input-md" required="" /> 
+
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <h:outputLabel class="col-md-4 control-label" for="userstatus"> Status </h:outputLabel>
+                    <div class="col-md-4">
+                        <h:selectOneMenu id="userstatus" value="#{usersController.actual.userstatus}" class="form-control">
+                            <f:selectItem itemValue = "A" itemLabel = "Active">Active</f:selectItem>
+                            <f:selectItem itemValue = "I" itemLabel = "Inactive">Inactive</f:selectItem>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <h:commandButton id="crear" value="#{usersController.doSave()}" action="#{usersController.viewList}" class="btn btn-success">Crear</h:commandButton>
+                        <h:commandButton id="cancel" value="#{usersController.viewList}" class="btn btn-danger">Cancelar</h:commandButton>
+                    </div>
+                </div>
+
+            </p:fieldset>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
